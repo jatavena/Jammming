@@ -3,6 +3,7 @@ import './App.css'
 
 import GetResults from './containers/GetResults.jsx';
 
+import PlaylistControl from './presentation/PlaylistControl.jsx';
 import PlayList from './presentation/Playlist.jsx';
 import QueryResults from './presentation/QueryResults.jsx';
 import SearchForm from './presentation/SearchForm.jsx';
@@ -61,6 +62,7 @@ function App() {
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>
         <div>
+          <PlaylistControl playlist={playlist} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} />
           <PlayList playlist={playlist} handleRemove={handleRemove} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} />
         </div>
       </div>
