@@ -1,12 +1,16 @@
-# React + Vite
+# Jammming
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a study project and a work in progress.  
+The purpose is to practice **React** and working with **APIs** by creating an app that can search for music using the [Spotify Web API](https://developer.spotify.com/documentation/web-api/).
 
-Currently, two official plugins are available:
+## Development Notes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The project was originally started with **Vite**.
+- Since Spotify does not allow `localhost` as a callback URI, I had to publish the app during development via **GitHub Pages**.
+- Built with **React 19** + **Vite**.
 
-## Expanding the ESLint configuration
+## Future Plans
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Add playlist creation and saving to Spotify.
+- Improve UI/UX and styling.
+- Add error handling and loading states.
