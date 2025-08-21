@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 import GetResults from './containers/GetResults.jsx';
+import { handleSpotifyCallback } from './containers/HandleSpotifyCallback.jsx';
 
 import PlaylistControl from './presentation/PlaylistControl.jsx';
 import PlayList from './presentation/Playlist.jsx';
 import QueryResults from './presentation/QueryResults.jsx';
 import SearchForm from './presentation/SearchForm.jsx';
 import Track from './presentation/Track.jsx';
+import LoginForm from './presentation/LoginForm.jsx';
+
+import Search from './containers/Search.jsx';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -15,7 +19,32 @@ function App() {
   const [playlist, setPlayList ] = useState([]);
   const [userInput, setUserInput] = useState('Your Playlist');
   const [isEditing, setIsEditing] = useState(false);
+  const [code, setCode] = useState(false);
+  const [token, setToken] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
+  const [encodedSearchInput, setEncodedSearchInput] = useState('');
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+
+    if (code) {
+
+      handleSpotifyCallback().then(data => {
+        if (data.access_token) {
+          setToken(data.access_token);
+          setCode(true);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      });
+    }
+  }, []);
+  
+  const handleSearchInput = (e) => {
+    setSearchInput(e.target.value);
+    setEncodedSearchInput(encodeURIComponent(searchInput));
+  }
+  
   const handleSearch = () => {
     setSearch(true);
   };
@@ -45,10 +74,10 @@ function App() {
       setIsEditing(false);
     }
   }
-
+  
   return (
     <>
-      <SearchForm handleSearch={handleSearch} results={results} />
+      { !token ? <LoginForm /> : <SearchForm handleSearch={handleSearch} searchInput={searchInput} handleSearchInput={handleSearchInput} />}
       <div style={
         {'display': 'flex',
           'alignItems': 'flexStart',
@@ -57,7 +86,9 @@ function App() {
         }
       }
       > 
-        <div> 
+        <div>
+          <p>You will search: https://api.spotify.com/v1/search?q={encodedSearchInput}&type=track&limit=10</p>
+          <p>The header is: `Bearer {token}`</p>
           <GetResults setResults={setResults} search={search} setSearch={setSearch} />
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>

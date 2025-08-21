@@ -1,46 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, } from 'react';
 
-const Search = ( {setResults} ) => {
-        /*
-        useEffect(() => {
-          const getData = async () => {
-            try {
-                const response = await fetch('https://jsonplaceholder.typicode.com/albums');
-                if (response.ok) {
-                    const jsonResponse = await response.json();
-                    setResults(JSON.parse(jsonResponse));
-                }
-                throw new Error('Request failed!');
-            } catch (error) {
-                console.log(error);
-            }
-          }
-        }, [setResults])
-        */
-        useEffect(() => {
-          const dummy = {
-            "1": {
-            "name": "Cryptids ate my neighbour",
-            "year": "2025"
-            },
-            "2": {
-            "name": "Wildflowers of the Moon",
-            "year": "1969"
-            },
-            "3": {
-            "name": "The Game is pretty much rigged",
-            "year": "3000 BC"
-            },
-            "4": {
-            "name": "Sheeesh, just let me sleep!",
-            "year": "1981"
-            }
-          }
+const Search = ( {search, setResults} ) => {
     
-          setResults(dummy);
-        }, [setResults]);
+    useEffect(() => {
+      if (search === true) {
+      const getData = async () => {
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/albums');
+            if (response.ok) {
+                const jsonResponse = await response.json();
+                setResults(jsonResponse);
+            } else {
+            throw new Error('Request failed!');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+      }
+      getData();
+    }
+    }, [search, setResults]);
     
-        return null;
-};
+    return null;
+
+      /*  if (!token) {
+      console.log("Token missing!");
+      return null;
+    }
+  
+    console.log("Checking if search is TRUE...")
+    useEffect(() => {
+      console.log("useEffect fired with search:", search, "encoded:", encodedSearchInput);
+      if (search) {
+        console.log("Search TRUE, starting fetch...");
+        const getData = async () => {
+          try {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=${encodedSearchInput}&type=track&limit=10`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            });
+            if (response.ok) {
+              const jsonResponse = await response.json();
+              console.log(jsonResponse);
+            } else {
+              throw new Error('Request failed!');
+            }
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        setSearch(false);
+        getData();
+        }
+      }, [search, setResults, encodedSearchInput]);
+    return null;*/
+}
 
 export default Search;
