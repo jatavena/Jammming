@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlaylistControl = ({ playlist, handleInput, userInput, handleOnBlur, isEditing, handleClick }) => {
+const PlaylistControl = ({ playlist, handleInput, userInput, handleOnBlur, isEditing, handleClick, handleSave }) => {
   if (!playlist || playlist.length === 0) {
     return (
       <>
@@ -27,7 +27,7 @@ const PlaylistControl = ({ playlist, handleInput, userInput, handleOnBlur, isEdi
         ) : (
         <h2 onClick={handleClick}>{userInput}</h2>
         )}
-        <button>Save to Spotify</button>
+        <button onClick={handleSave} >Save to Spotify</button>
       </>
     );  
 
