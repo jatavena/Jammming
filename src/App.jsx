@@ -41,11 +41,12 @@ function App() {
   }, []);
   
   const handleSearchInput = (e) => {
-    setSearchInput(e.target.value);
-    setEncodedSearchInput(encodeURIComponent(searchInput));
+    const value = (e.target.value);
+    setSearchInput(value);
   }
   
   const handleSearch = () => {
+    setEncodedSearchInput(encodeURIComponent(searchInput));
     setSearch(true);
   };
   
@@ -89,7 +90,7 @@ function App() {
         <div>
           <p>You will search: https://api.spotify.com/v1/search?q={encodedSearchInput}&type=track&limit=10</p>
           <p>The header is: `Bearer {token}`</p>
-          <GetResults search={search} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} />
+          <GetResults search={search} setSearch={setSearch} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} />
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>
         <div>
