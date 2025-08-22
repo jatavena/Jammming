@@ -89,7 +89,7 @@ function App() {
         <div>
           <p>You will search: https://api.spotify.com/v1/search?q={encodedSearchInput}&type=track&limit=10</p>
           <p>The header is: `Bearer {token}`</p>
-          <GetResults setResults={setResults} search={search} setSearch={setSearch} />
+          <GetResults search={search} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} />
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>
         <div>

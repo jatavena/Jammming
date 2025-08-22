@@ -7,8 +7,9 @@ const Track = ({ results, handleAdd }) => {
 
   const trackItems = results.map((item) => (
     <li key={item.id} style={{'listStyle': 'none', 'border': 'solid 1px', 'margin': 10, 'maxWidth': 400}}>
-      <h3>Title: {item.title}</h3>
-      <p>Artist: {item.id}</p>
+      <h3>Song Title: {item.name}</h3>
+      <p>Album: {item.album.name}</p>
+      <p>Artist: {item.artists[0].name}</p>
       <button onClick={() => handleAdd(item)}>Add to Playlist +</button>
     </li>
   ));

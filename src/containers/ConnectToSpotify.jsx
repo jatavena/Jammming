@@ -1,7 +1,7 @@
 export async function loginToSpotify() {
   const clientId = "ec7fe00bdec6414f98e858b395175584";
   const redirectUri = "https://jatavena.github.io/Jammming/";
-  const scope = "user-read-private user-read-email";
+  const scope = "user-read-private user-read-email playlist-modify-public playlist-modify-private";
 
   const generateRandomString = (length) => {
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
