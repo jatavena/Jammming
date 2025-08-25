@@ -5,10 +5,9 @@ const SaveToSpotify = ({ playlist, save, setSave }) => {
         console.log("📋 Playlist type:", typeof playlist);
         
         if (playlist) {
-            const rawPlaylistBody = JSON.stringify(playlist);
-            const playlistBody = filter
-            console.log("✅ PLAYLIST BODY");
-            console.log(playlistBody);
+            const rawPlaylistBody = playlist.filter((track) => track.uri).map(track => track.uri);
+            console.log("✅ RAW PLAYLIST BODY");
+            console.log(rawPlaylistBody);
         } else {
             console.log("❌ Playlist is undefined/null/empty");
         }
