@@ -5,6 +5,8 @@ import GetResults from './containers/GetResults.jsx';
 import SaveToSpotify from './containers/SaveToSpotify.jsx';
 import { handleSpotifyCallback } from './containers/HandleSpotifyCallback.jsx';
 
+import fetchProfile from './HelperFunctions/fetchProfile.jsx';
+
 import PlaylistControl from './presentation/PlaylistControl.jsx';
 import PlayList from './presentation/Playlist.jsx';
 import QueryResults from './presentation/QueryResults.jsx';
@@ -22,6 +24,7 @@ function App() {
   const [token, setToken] = useState(null);
   const [searchInput, setSearchInput] = useState('');
   const [encodedSearchInput, setEncodedSearchInput] = useState('');
+  const [user, setUser] = useState('');
   const [save, setSave] = useState(false);
 
   useEffect(() => {
@@ -29,14 +32,14 @@ function App() {
     const code = urlParams.get("code");
 
     if (code) {
-
       handleSpotifyCallback().then(data => {
         if (data.access_token) {
           setToken(data.access_token);
           setCode(true);
+          fetchProfile(data.access_token, setUser);
           window.history.replaceState({}, document.title, window.location.pathname);
         }
-      });
+      });      
     }
   }, []);
   
@@ -83,6 +86,7 @@ function App() {
   return (
     <>
       { !token ? <LoginForm /> : <SearchForm handleSearch={handleSearch} searchInput={searchInput} handleSearchInput={handleSearchInput} />}
+      <p>You are logged in as: {user}</p>
       <div style={
         {'display': 'flex',
           'alignItems': 'flexStart',
@@ -97,7 +101,7 @@ function App() {
         </div>
         <div>
           <PlaylistControl playlist={playlist} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} handleSave={handleSave} />
-          <SaveToSpotify playlist={playlist} save={save} setSave={setSave} />
+          <SaveToSpotify userInput={userInput} token={token} playlist={playlist} save={save} setSave={setSave} user={user} />
           <PlayList playlist={playlist} handleRemove={handleRemove} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} />
         </div>
       </div>

@@ -30,7 +30,7 @@ const GetResults = ({ search, setSearch, token, encodedSearchInput, setResults }
             getData();
 
         } else {
-            console.log('Conditions NOT met - no API call');
+            console.log('Conditions for SEARCH NOT met - no API call');
         }
     }, [search, setSearch, encodedSearchInput, token, setResults]);
     
