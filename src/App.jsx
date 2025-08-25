@@ -26,6 +26,7 @@ function App() {
   const [encodedSearchInput, setEncodedSearchInput] = useState('');
   const [user, setUser] = useState('');
   const [save, setSave] = useState(false);
+  const [saveName, setSaveName] = useState('');
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -79,7 +80,8 @@ function App() {
     }
   }
 
-  const handleSave = (playlist) => {
+  const handleSave = () => {
+    setSaveName(userInput);
     setSave(true);
   }
   
@@ -101,7 +103,7 @@ function App() {
         </div>
         <div>
           <PlaylistControl playlist={playlist} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} handleSave={handleSave} />
-          <SaveToSpotify userInput={userInput} token={token} playlist={playlist} save={save} setSave={setSave} user={user} />
+          <SaveToSpotify saveName={saveName} token={token} playlist={playlist} save={save} setSave={setSave} user={user} />
           <PlayList playlist={playlist} handleRemove={handleRemove} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} />
         </div>
       </div>

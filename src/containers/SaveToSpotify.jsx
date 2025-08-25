@@ -1,17 +1,48 @@
 import { useEffect } from "react";
 
-const SaveToSpotify = ({ userInput, token, playlist, save, setSave, user }) => {
+const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user }) => {
 
 
     useEffect(() => {
-
-        if (userInput && token) {
-            try {
-                const savePlaylist = await fetch(`https://api.spotify.com/v1/users/${user}/playlists)`
+        console.log(`Saving a playlist called ${saveName}`);
+        if (save && saveName && token) {
+            const savePlaylist = async () => {
+                try {
+                    const saveResponse = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                            },
+                        body: JSON.stringify({
+                            name: saveName,
+                            public: false
+                        })
+                    })
+                    if (saveResponse.ok) {
+                        const jsonSaveResponse = await saveResponse.json();
+                        console.log(jsonSaveResponse);
+                    } else {
+                        throw new Error('Request failed!');
+                    }
+                } catch (Error) {
+                    const errorData = await saveResponse.text();
+                    setSave(false);
+                    console.error('API Error:', saveResponse.status, errorData);
+                    throw new Error(`Request failed: ${saveResponse.status}`);
+                }
             }
+            console.log("Calling savePlaylist()...");
+            savePlaylist();
+            console.log("Function called");
+        } else if (saveName === "") {
+            console.log("❌ Playlist name is undefined/null/empty");
+        } else if (token === "") {
+            console.log("❌ Missing token");
         } else {
-            console.log("❌ Playlist name is undefined/null/empty")
+            console.log("Save state failure!");
         }
+
 
         if (save) {
             console.log("🔄 SaveToSpotify rendered");
@@ -27,7 +58,7 @@ const SaveToSpotify = ({ userInput, token, playlist, save, setSave, user }) => {
             }
             setSave(false);
         }   
-    })
+    }, [save, saveName])
     
     return null;
 }
