@@ -18,10 +18,10 @@ function App() {
   const [results, setResults] = useState([]);
   const [search, setSearch] = useState(false);
   const [playlist, setPlaylist ] = useState([]);
-  const [userInput, setUserInput] = useState('Your Playlist');
+  const [userInput, setUserInput] = useState('Playlist name: click here');
   const [isEditing, setIsEditing] = useState(false);
-  const [code, setCode] = useState(false);
-  const [token, setToken] = useState(null);
+  const [code, setCode] = useState(false); 
+  const [token, setToken] = useState(null); 
   const [searchInput, setSearchInput] = useState('');
   const [encodedSearchInput, setEncodedSearchInput] = useState('');
   const [user, setUser] = useState('');
@@ -39,6 +39,8 @@ function App() {
           setCode(true);
           fetchProfile(data.access_token, setUser);
           window.history.replaceState({}, document.title, window.location.pathname);
+          const contentForStyling = document.getElementById("content");
+          contentForStyling.style.display = "flex"; 
         }
       });      
     }
@@ -87,25 +89,19 @@ function App() {
   
   return (
     <>
-      { !token ? <LoginForm /> : <SearchForm handleSearch={handleSearch} searchInput={searchInput} handleSearchInput={handleSearchInput} />}
-      <p>You are logged in as: {user}</p>
-      <div style={
-        {'display': 'flex',
-          'alignItems': 'flexStart',
-          'justifyContent': 'space-evenly',
-          'gap': 40
-        }
-      }
-      > 
-        <div>
+      { !token ? <LoginForm /> : <SearchForm handleSearch={handleSearch} searchInput={searchInput} handleSearchInput={handleSearchInput}/>}  
+      
+      <div id="content">  
           <GetResults search={search} setSearch={setSearch} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} />
+        <div className="container">
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>
-        <div>
-          <PlaylistControl playlist={playlist} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} handleSave={handleSave} />
+
           <SaveToSpotify saveName={saveName} token={token} playlist={playlist} save={save} setSave={setSave} user={user} />
-          <PlayList playlist={playlist} handleRemove={handleRemove} handleInput={handleInput} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} />
+        <div className="container">
+          <PlaylistControl playlist={playlist} handleInput={handleInput} handleRemove={handleRemove} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} handleSave={handleSave} PlaylistComponent={PlayList} />
         </div>
+
       </div>
 
     </>

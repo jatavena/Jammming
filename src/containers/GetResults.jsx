@@ -34,6 +34,32 @@ const GetResults = ({ search, setSearch, token, encodedSearchInput, setResults }
         }
     }, [search, setSearch, encodedSearchInput, token, setResults]);
     
+    /*useEffect(() => {
+        if (search === true) {     
+            const getData = async () => {
+                try {
+                    const response = await fetch("/Jammming/songBase.json");                    
+                    if (response.ok) {
+                        const jsonResponse = await response.json();
+                        setResults(jsonResponse.tracks.items);
+                        setSearch(false);
+                    } else {
+                        setSearch(false);
+                        console.log("No data fetched.")
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                        setSearch(false);
+                        setResults([]);
+                }
+            }
+            getData();
+
+        } else {
+            console.log('Conditions for SEARCH NOT met - no API call');
+        }
+    }, [search, token]);*/
+
     return null;
 }
 

@@ -1,3 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: black;
+    background-color: #1C352D;
+    background-image: url('./mandala.png');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    margin-top: 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: small;
+    color: #c5c3c1;
+    text-align: center;
+    display: block;
+    gap: 1rem;
+}
+
+footer span {
+    color: #F5C9B0;
+}
+
+h2 {
+    font-family: "Archivo Black";
+}
+
+button {
+    font-family: 'Space Grotesk';
+    border: none;
+    border-radius: 0.75rem;
+    background-color: #F5C9B0;
+    color: #1a1512;
+}
+
+button:hover {
+    background-color: #be9d8a;
+    color: #F9F6F3;
+    Transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
 
 #hero h1 {
     font-family: "Syne";
@@ -26,7 +78,7 @@
 }
 
 #content {
-    display: none;
+    display: flex;
     justify-content: center;
     gap: 0.5rem;
     width: 50rem;
@@ -49,15 +101,8 @@
     color: #1C352D;
     width: 100%;
     border-radius: 10px;
-    padding: 1rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-#firstform button {
-  margin-left: 1rem;
-  margin-right: 1rem;
+    padding: 1rem;
 }
 
 .container {
@@ -68,7 +113,7 @@
     height: 30rem;
     width: 25rem;
     overflow: hidden;
-    margin-top: 0.5rem;
+    margin: 0;
 }
 
 .containerHeader {
@@ -155,6 +200,7 @@
     line-height: 0.5;   
     box-shadow: 0 4px 12px rgba(28, 53, 45, 0.2);
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .trackitem h3, .playlistitem h3 {
@@ -190,6 +236,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0.5rem;
-    line-height: 1.2;
+    line-height: 1.2; /* Override the 0.5 line-height */
     display: block;
 }

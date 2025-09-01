@@ -7,8 +7,15 @@ const QueryResults = ({ TrackComponent, results, handleAdd }) => {
   if (!results || results.length === 0) {
     return (
       <>
-        <h2>Search Results</h2>
-        <p>Search for music to see results here.</p>
+        <div className="containerHeader forResults">
+          <h2>Search Results</h2>
+        </div>
+        <div id="resultContainer">
+
+        </div>
+        <div className="containerFooter forResults">
+          <p>🎵</p>
+        </div>
       </>
     );
   }
@@ -16,8 +23,15 @@ const QueryResults = ({ TrackComponent, results, handleAdd }) => {
   const Component = TrackComponent;  
   return (
     <>
-      <h2>Search Results</h2>
-      <Component results={results} handleAdd={handleAdd} />
+      <div className="containerHeader forResults">
+        <h2>Search Results</h2>
+      </div>
+      <div id="resultContainer">
+        <Component results={results} handleAdd={handleAdd} />
+      </div>
+      <div className="containerFooter forResults">
+        <p>🎵</p>
+      </div>
     </>
   );
 };

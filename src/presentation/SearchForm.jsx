@@ -8,14 +8,14 @@ const SearchForm = ( {handleSearch, handleSearchInput, searchInput} ) => {
 
     return (
         <>
-        <form
-          onSubmit={handleSubmit}
-          style={{'border': 'solid 1px', 'padding': 20, 'display': 'flex', 'justifyContent': 'space-evenly'}}
-        >
-          <input type="text" placeholder="type your search here" style={{'textAlign': 'center'}} value={searchInput} onChange={handleSearchInput} ></input>
-          <br />
-          <button type="submit" >Search</button>
-        </form>
+        <div id="firstform">
+          <form
+            onSubmit={handleSubmit}
+          >
+            <input type="text" placeholder="type your search here" value={searchInput} onChange={handleSearchInput} ></input>
+            <button type="submit" >Search Tracks</button>
+          </form>
+        </div>
         </>
     );
 }

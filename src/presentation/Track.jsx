@@ -6,10 +6,10 @@ const Track = ({ results, handleAdd }) => {
   }
 
   const trackItems = results.map((item) => (
-    <li key={item.id} style={{'listStyle': 'none', 'border': 'solid 1px', 'margin': 10, 'maxWidth': 400}}>
-      <h3>Song Title: {item.name}</h3>
-      <p>Album: {item.album.name}</p>
-      <p>Artist: {item.artists[0].name}</p>
+    <li key={item.id} className="trackitem">
+      <h3 title={item.name}>{item.name}</h3>
+      <p title={item.artists[0].name}>{item.artists[0].name}</p>
+      <p title={item.album.name}>Album: {item.album.name}</p>
       <button onClick={() => handleAdd(item)}>Add to Playlist +</button>
     </li>
   ));

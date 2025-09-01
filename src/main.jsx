@@ -5,8 +5,12 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <h1>JamMming</h1>
-    <h2>The incredible playlist machine</h2>
-    <App />
+    <div id="hero">
+      <h1>jammming</h1>
+      <h2>The incredible playlist machine</h2>
+    </div>
+    <div id="App">
+      <App />
+    </div>
   </StrictMode>,
 )
