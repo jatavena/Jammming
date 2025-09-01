@@ -99,7 +99,3 @@ The results may not be as polished as I initially envisioned, but the applicatio
 One goal was to practice the presentation/container pattern, but I don't think I implemented it consistently. The concept involves separating components that handle visual presentation from those that manage application logic. Honestly, my application's structure is somewhat inconsistent and doesn't fully realize this pattern. However, this is just one of many projects I plan to build, and I'll continue practicing React patterns in future work.
 
 I also want to become more proficient with CSS methodologies and thinking about HTML structure in a more class-based, systematic way. My broader goal is to gradually learn how to create web applications and websites with various architectural approaches and design patterns.
-
-## Known Issues
-
-- **Form Submission Bug**: The page would reload when users pressed Enter while focused on the search input. This was fixed by changing the search button to a submit type and adding a form submit handler that prevents the default browser behavior.
