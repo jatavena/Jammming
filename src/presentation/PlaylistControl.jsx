@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PlaylistControl = ({ playlist, PlaylistComponent, handleRemove, handleInput, userInput, handleOnBlur, isEditing, handleClick, handleSave }) => {
   if (!playlist || playlist.length === 0) {
     return (

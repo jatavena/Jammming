@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user }) => {
+const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setListSaved }) => {
 
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user }) => {
                             await addSongsToPlaylist();
 
                         } else {
-                            console.log("❌ Playlist is undefined/null/empty");
+                            console.log("Playlist is undefined/null/empty");
                         }
                     } else {
                         throw new Error('Request failed!');
@@ -68,11 +68,12 @@ const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user }) => {
             }
             savePlaylist();
             setSave(false);
+            setListSaved(true);
             
         } else if (saveName === "") {
-            console.log("❌ Playlist name is undefined/null/empty");
+            console.log("Playlist name is undefined/null/empty");
         } else if (token === "") {
-            console.log("❌ Missing token");
+            console.log("issing token");
         } else {
             console.log("Save state failure!");
         } 

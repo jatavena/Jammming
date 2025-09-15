@@ -193,3 +193,226 @@
     line-height: 1.2;
     display: block;
 }
+
+/* Tabletit ja pienet desktop-näytöt (768px ja alle) */
+@media screen and (max-width: 768px) {
+    /* Hero-osio */
+    #hero h1 {
+        font-size: 6rem; /* Pienempi kuin 10rem */
+    }
+    
+    #hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Pääsovellus */
+    #app {
+        width: 95vw; 
+        max-width: 45rem;
+        padding: 0 1rem;
+    }
+    
+    #content {
+        width: 100%;
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    /* Kontit */
+    .container {
+        width: 100%;
+        max-width: 35rem;
+        height: 25rem; 
+        margin-bottom: 1rem;
+    }
+    
+    /* Form */
+    #firstform {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    #firstform button {
+        margin: 0.5rem;
+    }
+    
+
+    .trackitem:hover, 
+    .playlistitem:hover {
+        transform: none; 
+        background-color: #D8CFC9;
+    }
+    
+    .container .containerFooter button:hover,
+    #loginform button:hover {
+        transform: none; 
+    }
+    
+
+    .trackitem:active, 
+    .playlistitem:active {
+        background-color: #D8CFC9;
+        transform: scale(0.98);
+    }
+    
+    .container .containerFooter button:active,
+    #loginform button:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Puhelimet (480px ja alle) */
+@media screen and (max-width: 480px) {
+    /* Hero vielä pienemmäksi */
+    #hero h1 {
+        font-size: 3.5rem; 
+        line-height: 1.1;
+    }
+    
+    #hero h2 {
+        font-size: 1.2rem;
+    }
+    
+    /* Sovellus */
+    #app {
+        width: 98vw;
+        padding: 0 0.5rem;
+    }
+    
+    /* Kontit */
+    .container {
+        width: 100%;
+        max-width: none;
+        height: 22rem; 
+        margin-bottom: 1rem;
+    }
+    
+    /* Konttien sisältö */
+    .containerHeader {
+        padding: 0.75rem;
+        min-height: 2.5rem;
+    }
+    
+    .containerHeader h2 {
+        font-size: 1.1rem;
+    }
+    
+    .containerFooter {
+        min-height: 4rem;
+        padding: 0 0.75rem;
+    }
+
+    
+    /* Track-itemit */
+    .trackitem, .playlistitem {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+    }
+    
+    .trackitem h3, .playlistitem h3 {
+        font-size: 0.95rem;
+        margin: 0.25rem;
+    }
+    
+    .trackitem p, .playlistitem p {
+        margin: 0.25rem;
+        font-size: 0.8rem;
+    }
+    
+    /* Napit */
+    button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        min-height: 2.5rem; 
+        min-width: 2.5rem;
+    }
+    
+    .container .containerFooter button {
+        height: 2.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    /* Login-formi */
+    #loginform button {
+        height: 2.5rem;
+        margin: 1rem;
+        padding: 0.5rem 1.5rem;
+    }
+    
+    #firstform {
+        padding: 0.75rem;
+    }
+    
+    #firstform input {
+        font-size: 1rem; 
+        padding: 0.75rem;
+    }
+    
+    /* Scrollaus-alueet */
+    #resultContainer, #playlistContainer {
+        padding: 0.25rem;
+        max-height: calc(22rem - 4rem - 2.5rem);
+    }
+}
+
+/* Erittäin pienet näytöt (360px ja alle) */
+@media screen and (max-width: 360px) {
+    #hero h1 {
+        font-size: 1.8rem; 
+        margin-bottom: 0.5rem;
+    }
+    
+    #hero h2 {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Sovellus */
+    #app {
+        width: 92vw; 
+        padding: 0 1.5rem; 
+    }
+    
+    /* Kontit */
+    .container {
+        height: 20rem;
+        margin-bottom: 2rem; 
+    }
+    
+    #resultContainer, #playlistContainer {
+        max-height: calc(20rem - 4rem - 2.5rem);
+    }
+    
+    .trackitem, .playlistitem {
+        font-size: 0.8rem;
+    }
+    
+    .trackitem h3, .playlistitem h3 {
+        font-size: 0.9rem;
+    }
+}
+
+/* Lisäparannuksia kaikille mobiilinäytöille */
+@media screen and (max-width: 768px) {
+    /* Parannettu sorminavigointi */
+    .trackitem, .playlistitem {
+        cursor: pointer;
+    }
+    
+    body {
+        background-attachment: scroll; 
+        background-position: center;
+    }
+    
+    body, #root {
+        overflow-x: hidden;
+    }
+    
+    #resultContainer, #playlistContainer {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+}

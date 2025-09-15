@@ -1,5 +1,3 @@
-import React from 'react';
-
 const PlayList = ({ playlist, handleRemove }) => {
   
   const playlistItems = playlist.map((item) => (

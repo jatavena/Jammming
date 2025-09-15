@@ -92,7 +92,7 @@ function App() {
       { !token ? <LoginForm /> : <SearchForm handleSearch={handleSearch} searchInput={searchInput} handleSearchInput={handleSearchInput}/>}  
       
       <div id="content">  
-          <GetResults search={search} setSearch={setSearch} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} />
+          <GetResults search={search} setSearch={setSearch} encodedSearchInput={encodedSearchInput} token={token} setResults={setResults} playlist={playlist} />
         <div className="container">
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>

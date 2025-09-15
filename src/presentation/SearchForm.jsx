@@ -1,5 +1,3 @@
-import React from "react";
-
 const SearchForm = ( {handleSearch, handleSearchInput, searchInput} ) => {
     const handleSubmit = (e) => {
         e.preventDefault();

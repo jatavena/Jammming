@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-/* Reset body and html to remove default margins/padding */
+
 body {
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Style the #root div instead of body for layout */
+
 #root {
     text-align: center;
     display: flex;
@@ -60,3 +60,4 @@ button:hover {
     transition: 0.3s ease-in-out;
     cursor: pointer;
 }
+

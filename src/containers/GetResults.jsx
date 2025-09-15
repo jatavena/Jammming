@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const GetResults = ({ search, setSearch, token, encodedSearchInput, setResults }) => {
+const GetResults = ({ search, setSearch, token, encodedSearchInput, setResults, playlist }) => {
 
     useEffect(() => {
         if (search === true && token && encodedSearchInput) {     
@@ -13,7 +13,13 @@ const GetResults = ({ search, setSearch, token, encodedSearchInput, setResults }
                     });                    
                     if (response.ok) {
                         const jsonResponse = await response.json();
-                        setResults(jsonResponse.tracks.items);
+                        
+                        const filteredResults = jsonResponse.tracks.items.filter((result) => 
+                            !playlist.some((item) => 
+                                item.id === result.id
+                            ));
+                        
+                        setResults(filteredResults);
                         setSearch(false);
                     } else {
                         const errorData = await response.text();

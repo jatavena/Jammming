@@ -1,5 +1,3 @@
-import React from 'react';
-
 const QueryResults = ({ TrackComponent, results, handleAdd }) => {
   console.log('QueryResults - TrackComponent:', TrackComponent);
   console.log('QueryResults - results:', results);

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Track = ({ results, handleAdd }) => {
    if (!results || !Array.isArray(results) || results.length === 0) {
     return <p>No results to display.</p>;
