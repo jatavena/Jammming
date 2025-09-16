@@ -9,7 +9,7 @@
     margin-bottom: 0rem;
 }
 
-#hero h2 {
+#hero h2, .messagebox h2 {
     font-family: "Space Grotesk";
     background: linear-gradient(90deg, #A6B28B, #F5C9B0);
     -webkit-background-clip: text;
@@ -58,6 +58,27 @@
 #firstform button {
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+.messagebox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(63, 116, 98, 1);
+    border: rgba(21, 39, 33, 0.8) solid 3px;
+    border-radius: 10px;
+    box-shadow:
+        0px 10px 10px rgba(21, 39, 33, 0.8),
+        0px -5px 15px rgba(255, 255, 255, 0.4);
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+    z-index: 2;
+    width: 25rem;
+    height: 10rem;
+    padding: 1rem;
 }
 
 .container {

@@ -13,6 +13,7 @@ import QueryResults from './presentation/QueryResults.jsx';
 import SearchForm from './presentation/SearchForm.jsx';
 import Track from './presentation/Track.jsx';
 import LoginForm from './presentation/LoginForm.jsx';
+import ListSaved from './presentation/ListSaved.jsx';
 
 function App() {
   const [results, setResults] = useState([]);
@@ -20,13 +21,16 @@ function App() {
   const [playlist, setPlaylist ] = useState([]);
   const [userInput, setUserInput] = useState('Playlist name: click here');
   const [isEditing, setIsEditing] = useState(false);
-  const [code, setCode] = useState(false); 
-  const [token, setToken] = useState(null); 
+  const [code, setCode] = useState(false);
+  const [token, setToken] = useState(null);
   const [searchInput, setSearchInput] = useState('');
   const [encodedSearchInput, setEncodedSearchInput] = useState('');
   const [user, setUser] = useState('');
   const [save, setSave] = useState(false);
   const [saveName, setSaveName] = useState('');
+
+  const [showMessage, setShowMessage] = useState(false);
+
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -86,6 +90,10 @@ function App() {
     setSaveName(userInput);
     setSave(true);
   }
+
+  const onClose = () => {
+    setShowMessage(false);
+  }
   
   return (
     <>
@@ -97,10 +105,13 @@ function App() {
           <QueryResults results={results} TrackComponent={Track} handleAdd={handleAdd} />
         </div>
 
-          <SaveToSpotify saveName={saveName} token={token} playlist={playlist} save={save} setSave={setSave} user={user} />
+          <SaveToSpotify saveName={saveName} token={token} playlist={playlist} save={save} setSave={setSave} user={user} setShowMessage={setShowMessage} />
         <div className="container">
           <PlaylistControl playlist={playlist} handleInput={handleInput} handleRemove={handleRemove} userInput={userInput} isEditing={isEditing} handleOnBlur={handleOnBlur} handleClick={handleClick} handleSave={handleSave} PlaylistComponent={PlayList} />
         </div>
+
+        <ListSaved show={showMessage} onClose={onClose} />
+
 
       </div>
 

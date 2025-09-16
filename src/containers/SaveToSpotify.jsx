@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setListSaved }) => {
+const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setShowMessage }) => {
 
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setList
 
                         if (playlist) {
                             const playlistBody = playlist.filter((track) => track.uri).map(track => track.uri);
-                            console.log("✅ RAW PLAYLIST BODY");
+                            console.log("RAW PLAYLIST BODY");
                             console.log(playlistBody);
                             const addSongsToPlaylist = async () => {
                                 try {
@@ -42,6 +42,7 @@ const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setList
                                     if (addResponse.ok) {
                                         const jsonAddResponse = await addResponse.json();
                                         console.log("Tracks added successfully:", jsonAddResponse);
+                                        setShowMessage(true);
                                     } else {
                                         throw new Error('Add Request failed!');
                                     }
@@ -68,12 +69,11 @@ const SaveToSpotify = ({ saveName, token, playlist, save, setSave, user, setList
             }
             savePlaylist();
             setSave(false);
-            setListSaved(true);
             
         } else if (saveName === "") {
             console.log("Playlist name is undefined/null/empty");
         } else if (token === "") {
-            console.log("issing token");
+            console.log("Missing token");
         } else {
             console.log("Save state failure!");
         } 
